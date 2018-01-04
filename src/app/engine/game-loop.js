@@ -1,5 +1,6 @@
 export class GameLoop {
     update = null;
+    redraw = null;
 
     constructor(deltaTime = 1/60) {
         let accumulatedTime = 0;
@@ -18,6 +19,8 @@ export class GameLoop {
             }
 
             lastTime = time;
+
+            this.redraw(deltaTime);
             this.nextFrame();
         }
     }
@@ -28,6 +31,10 @@ export class GameLoop {
 
     onUpdate(fn) {
         this.update = fn.bind(fn);
+    }
+
+    onRedraw(fn) {
+        this.redraw = fn.bind(fn);
     }
 
     start() {
