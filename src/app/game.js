@@ -6,6 +6,7 @@ export class Game {
     loop = new GameLoop();
     keyboard = new Keyboard();
     audioChannel = new AudioChannel();
+    spriteSheet = null;
     sprites = new Map();
 
     constructor() {
@@ -23,7 +24,10 @@ export class Game {
 
     setupAudio() {}
 
-    setupSprites() {}
+    setupSprites() {
+        const context = window.app.canvas.getContext('2d');
+        this.spriteSheet = new SpriteSheet();
+    }
 
     setupLoop() {
         this.loop.onUpdate(this.update.bind(this));
