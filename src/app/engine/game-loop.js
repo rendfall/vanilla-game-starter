@@ -30,11 +30,11 @@ export class GameLoop {
     }
 
     onUpdate(fn) {
-        this.update = fn.bind(fn);
+        this.update = fn;
     }
 
     onRedraw(fn) {
-        this.redraw = fn.bind(fn);
+        this.redraw = fn;
     }
 
     start() {
